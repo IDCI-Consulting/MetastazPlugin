@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.1" version="2.0"
+   xmlns="http://pear.php.net/dtd/package-2.0"
+   xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+   http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0
+   http://pear.php.net/dtd/package-2.0.xsd"
+>
+  <name>MetastazPlugin</name>
+  <channel>plugins.symfony-project.org</channel>
+  <summary>A metadata active record system based on symfony.</summary>
+  <description>A metadata active record system based on symfony.</description>
+  <lead>
+    <name>Pierre FERROLLIET</name>
+    <user>Webokage</user>
+    <email>pierre.ferrolliet@idci-consulting.fr</email>
+    <active>yes</active>
+  </lead>
+  <lead>
+    <name>Gabriel BONDAZ</name>
+    <user>idciconsulting</user>
+    <email>gabriel.bondaz@idci-consulting.fr</email>
+    <active>yes</active>
+  </lead>
+  <date>2011-09-19</date>
+  <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+  </version>
+  <stability>
+    <release>stable</release>
+    <api>stable</api>
+  </stability>
+  <license uri="http://www.symfony-project.com/license">
+    GPL license
+  </license>
+  <notes />
+ 
+  <contents>
+    <file role="data" name="README.md" />
+    <file role="data" name="LICENSE" />
+    <file role="data" name="AUTHORS" />
+
+    <dir name="config">
+      <file role="data" name="routing.yml" />
+      <file role="data" name="metastaz_template_schema.yml" />
+      <file role="data" name="metastaz_schema.yml" />
+    </dir>
+
+    <dir name="lib">
+      <dir name="Interfaces">
+        <file role="data" name="MetastazInterface.php" />
+        <file role="data" name="MetastazStoreInterface.php" />
+      </dir>
+      <dir name="Stores">
+        <file role="data" name="PropelORMMetastazStore.php" />
+      </dir>
+      <file role="data" name="MetastazContainer.php" />
+      <file role="data" name="MetastazObject.php" />
+    </dir>
+
+    <dir name="modules"></dir>
+
+    <dir name="test">
+      <dir name="unit"></dir>
+      <dir name="functional"></dir>
+    </dir>
+
+    <dir name="web"></dir>
+  </contents>
+ 
+  <dependencies>
+    <required>
+      <php>
+        <min>5.2.4</min>
+      </php>
+      <pearinstaller>
+        <min>1.4.1</min>
+      </pearinstaller>
+      <package>
+        <name>symfony</name>
+        <channel>pear.symfony-project.com</channel>
+        <min>1.3.0</min>
+        <max>1.5.0</max>
+        <exclude>1.5.0</exclude>
+      </package>
+    </required>
+  </dependencies>
+
+  <phprelease>
+  </phprelease>
+
+  <changelog>
+    <!-- CHANGELOG -->
+  </changelog>
+</package>
