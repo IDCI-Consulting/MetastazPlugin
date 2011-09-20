@@ -1,0 +1,18 @@
+#########################
+#   Metastaz Template
+#########################
+
+propel:
+  _attributes:  { package: plugins.MetastazPlugin.lib }
+
+  metastaz_template_field:
+    id:         ~
+    meta_namespace:  { type: varchar(128) }
+    meta_key:        { type: varchar(128) }
+    is_indexed: { type: boolean }
+    options:    { type: longvarchar }
+
+  metastaz_template_field_type:
+    id:       ~
+    name:     { type: varchar(128) }
+    class_key { type: varchar(128), inheritance: single }

@@ -1,0 +1,14 @@
+################
+#   Metastaz
+################
+
+propel:
+  _attributes:  { package: plugins.MetastazPlugin.lib }
+
+  metastaz:
+    meta_dimension:  { type: varchar(128), primaryKey: true }
+    meta_namespace:  { type: varchar(128), primaryKey: true }
+    meta_key:        { type: varchar(128), primaryKey: true }
+    meta_value:      { type: longvarchar }
+
+

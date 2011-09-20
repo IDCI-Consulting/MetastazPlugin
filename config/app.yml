@@ -1,0 +1,11 @@
+all:
+  metastaz:
+    parameters:
+      container:
+        use_template: false
+        instance_pooling: false
+      store:
+        class: PropelORMMetastazStore
+        connection: metastaz
+      method_encode: json_encode
+      method_decode: json_decode
