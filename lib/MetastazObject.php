@@ -47,7 +47,7 @@ abstract class MetastazObject implements MetastazInterface
                     'object' => $this,
 //                    'container' => array(
 //                        'use_template' => true,
-//                        'instance_spooling' => true
+//                        'instance_pooling' => true
 //                    ),
 //                    'store' => array(
 //                        'class' => 'DoctrineODMMetastazStore',

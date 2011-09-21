@@ -3,7 +3,7 @@ all:
     parameters:
       container:
         use_template: false
-        instance_pooling: false
+        instance_pooling: true
       store:
         class: PropelORMMetastazStore
         connection: metastaz

@@ -133,13 +133,10 @@ class PropelORMMetastazStore implements MetastazStoreInterface
     {
       foreach($keys as $key => $value)
       {
-        $entity = MetastazPeer::retrieveByPK(array(
-          'meta_dimension' => $dimension,
-          'meta_namespace' => $namespace,
-          'meta_key' => $key
-        ));
+        $entity = MetastazPeer::retrieveByPK($dimension, $namespace, $key);
 
-        if (!$entity) {
+        if (!$entity) 
+        {
           $entity = new Metastaz();
           $entity->setMetaDimension($dimension);
           $entity->setMetaNamespace($namespace);
@@ -160,11 +157,7 @@ class PropelORMMetastazStore implements MetastazStoreInterface
     {
       foreach($keys as $key => $value)
       {
-        $entity = MetastazPeer::retrieveByPK(array(
-          'meta_dimension' => $dimension,
-          'meta_namespace' => $namespace,
-          'meta_key' => $key
-        ));
+        $entity = MetastazPeer::retrieveByPK($dimension, $namespace, $key);
         if (!$entity) 
         {
           throw new Exception(
@@ -189,6 +182,9 @@ class PropelORMMetastazStore implements MetastazStoreInterface
   {
     $confParams = sfConfig::get('app_metastaz_parameters');
     $callback = isset($confParams['method_encode']) ? $confParams['method_encode'] : 'serialize';
+    if(!$callback)
+      return $data;
+
     return call_user_func($callback, $data);
   }
 
@@ -198,7 +194,10 @@ class PropelORMMetastazStore implements MetastazStoreInterface
   protected static function _deserialize($data)
   {
     $confParams = sfConfig::get('app_metastaz_parameters');
-    $callback = isset($confParams['method_decode']) ?  $confParams['method_decode'] : 'unserialize';
+    $callback = isset($confParams['method_decode']) ? $confParams['method_decode'] : 'unserialize';
+    if(!$callback)
+      return $data;
+
     return call_user_func($callback, $data);
   }
 }

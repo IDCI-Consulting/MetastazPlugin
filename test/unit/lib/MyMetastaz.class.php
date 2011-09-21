@@ -19,4 +19,6 @@
 
   public function getMetastazDimensionId() { return $this->dimension_id; }
   public function getMetastazTemplateName() { return $this->template_name; }
+  public function setMetastazDimensionId($d) { $this->dimension_id = $d; }
+  public function setMetastazTemplateName($t) { $this->template_name = $t; }
 }

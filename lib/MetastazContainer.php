@@ -30,11 +30,6 @@ class MetastazContainer
   protected $metastaz_pool = null;
 
   /**
-   * Is persisted
-   */
-  protected $is_persisted = false;
-
-  /**
    * Constructor
    *
    * @param array $parameters
@@ -130,16 +125,6 @@ class MetastazContainer
       return isset($container['instance_pooling']) && $container['instance_pooling'];
     }
     return false;
-  }
-
-  /**
-   * Is persisted
-   *
-   * @return boolean
-   */
-  public function isPersisted()
-  {
-    return $this->is_persisted;
   }
 
   /**
@@ -387,8 +372,9 @@ class MetastazContainer
     );
   }
 
+
   /**
-   * Persist Metastaz in the pool
+   * Persist Metastaz from the pool to the store
    */
   public function persist()
   {
@@ -407,23 +393,6 @@ class MetastazContainer
       $this->metastaz_pool->getDeletes()
     );
 
-    $this->is_persisted = true;
-  }
-
-  /**
-   * Flush Metastaz from the pool
-   */
-  public function flush()
-  {
-    if (!$this->isPersisted()) {
-      $this->persist();
-    }
-
-    $store = $this->getMetastazStoreService();
-    $store::flush();
-
-    $em  = MetastazTemplateBundle::getContainer()->get('doctrine')->getEntityManager();
-    $evm = $em->getEventManager();
-    $evm->dispatchEvent('metastazFlush', new LifecycleEventArgs($this->getParameter('object'), $em));
+    $this->load($this->getMetastazStoreService()->getAll($this->getMetastazDimension()));
   }
 }
